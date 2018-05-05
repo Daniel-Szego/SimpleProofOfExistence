@@ -1,10 +1,16 @@
 
 contract ProofOfExistence {
+
     address public owner;
     mapping(address => bytes32) public hashes;     
 
     function ProofOfExistance(){
         owner = msg.sender;
+    }
+
+    modifier isAdmin(){
+        require(owner == msg.sender);
+        _;
     }
 
     function RegisterHash(string input){
@@ -30,5 +36,9 @@ contract ProofOfExistence {
             bytesStringTrimmed[j] = bytesString[j];
         }
         return string(bytesStringTrimmed);
+    }
+
+    function kill() isAdmin{
+        selfdestruct(owner);
     }
 }
