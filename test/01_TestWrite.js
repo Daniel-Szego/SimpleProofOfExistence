@@ -12,7 +12,7 @@ contract('ProofOfExistence', function(accounts) {
             hashStringInput = result;
             return ProofOfExistenceInstance.RegisterHash(hashStringInput, {from: accounts[0]});             
         }).then(function(result) {
-            return ProofOfExistenceInstance.GetHashSting(accounts[0], {from: accounts[0]});             
+            return ProofOfExistenceInstance.GetHashString(accounts[0], {from: accounts[0]});             
         }).then(function(result) {
             hashStringOutout = result;
             assert.equal(hashStringInput, hashStringOutout, "Hashes are equal");            

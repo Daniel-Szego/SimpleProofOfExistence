@@ -17,7 +17,7 @@ contract ProofOfExistence {
         hashes[msg.sender] = _input;
     }
 
-    function GetHashSting(address _address) view returns (string){
+    function GetHashString(address _address) view returns (string){
         return hashes[_address];
     }
 
@@ -25,7 +25,6 @@ contract ProofOfExistence {
         bytes32 hash = keccak256(_input);
         return hash;
     }
-
 
     function kill() isAdmin{
         selfdestruct(owner);
